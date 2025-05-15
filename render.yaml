@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: n8n
+    env: docker
+    dockerfilePath: ./Dockerfile
+    plan: free
+    envVars:
+      - key: GENERIC_TIMEZONE
+        value: Europe/Rome
+      - key: N8N_BASIC_AUTH_ACTIVE
+        value: true
+      - key: N8N_BASIC_AUTH_USER
+        value: admin
+      - key: N8N_BASIC_AUTH_PASSWORD
+        value: tua_password_sicura
+      - key: WEBHOOK_TUNNEL_URL
+        value: https://n8n.onrender.com

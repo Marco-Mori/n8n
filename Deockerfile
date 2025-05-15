@@ -1,0 +1,19 @@
+FROM node:18.18.2
+
+WORKDIR /usr/src/app
+
+# Copia tutto nel container
+COPY . .
+
+# Installa pnpm
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Installa dipendenze e builda
+RUN pnpm install --frozen-lockfile
+RUN pnpm build
+
+# Espone la porta di default
+EXPOSE 5678
+
+# Avvia n8n
+CMD ["pnpm", "start"]
